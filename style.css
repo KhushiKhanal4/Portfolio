@@ -76,23 +76,26 @@ nav ul li a:hover {
     color: #DD5245;
 }
 
-.cv-btn {
+.button {
     display: inline-block;
-    margin-top: 20px;
     padding: 10px 30px;
-    border: 2px solid #DD5245;
+    margin: 0px 0px;
+    background-color: #DD5245;
     border-radius: 10px;
-    color: #F9F9F6;
+    color: #08131F;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
     transition: background 0.3s, color 0.3s;
 }
-
-.cv-btn:hover {
-    background: #DD5245;
+button a{
+    text-decoration: none;
     color: #08131F;
-    box-shadow: #fda79f8c 0px 0px 16px;
+}
+
+.button:hover {
+    background: #F3E28E;
+    box-shadow: #dd52458c 0px 0px 16px;
 }
 
 /* Background Rectangles */
@@ -175,6 +178,7 @@ nav ul li a:hover {
     padding-bottom: 170px;
 }
 
+
 .section-title {
     font-size: 36px;
     line-height: 40px;
@@ -189,9 +193,8 @@ nav ul li a:hover {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: normal;
     color: #f9f9f6e1;
+    padding-bottom: 34px;
 }
-
-
 
 .image-container {
     display: flex;
@@ -204,6 +207,8 @@ nav ul li a:hover {
     margin-bottom: 16px;
     border-radius: 4%;
     box-shadow: 0px 0px 16px #dd5245b6;
+    width: 400px;
+    height: 400px;
 }
 
 .quote {
