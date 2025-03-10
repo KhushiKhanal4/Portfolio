@@ -12,6 +12,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Stops the page from reloading
+    console.log("Form submitted!"); // Debugging message
+    // Your form submission logic here
+});
+
 
 // Typewriter Effect
 const texts = [
