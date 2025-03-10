@@ -1,11 +1,18 @@
-function hamburg(){
-    const navbar = document.querySelector(".dropdown")
-    navbar.style.transform = "translateY(0px)"
-}
-function cancel(){
-    const navbar = document.querySelector(".dropdown")
-    navbar.style.transform = "translateY(-500px)"
-}
+// Get references to the hamburger and navigation menu
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    navMenu.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+});
+
+
 // Typewriter Effect
 const texts = [
     "DEVELOPER",
