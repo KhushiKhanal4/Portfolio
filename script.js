@@ -1,4 +1,4 @@
-// Get references to the hamburger and navigation menu
+// Hamburger Menu
 document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
@@ -10,7 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
     navMenu.addEventListener('click', () => {
         navMenu.classList.remove('active');
     });
-}); const navLinks = document.querySelectorAll(".nav-menu li a");
+}); 
+
+// smooth navigation
+const navLinks = document.querySelectorAll(".nav-menu li a");
 
 navLinks.forEach(link => {
     link.addEventListener("click", function () {
@@ -22,17 +25,9 @@ navLinks.forEach(link => {
     });
 });
 
+// morph effect
 
-document.getElementById('contact-form').addEventListener('submit', function (event) {
-    event.preventDefault(); // Stops the page from reloading
-    console.log("Form submitted!"); // Debugging message
-    // Your form submission logic here
-});
-
-
-
-// Typewriter Effect
-const texts = ["Frontend Developer", "UI/UX Designer"];
+const texts = ["UI/UX Designer","Frontend Developer" ];
 let textIndex = 0;
 const textElement = document.querySelector(".morph-text");
 
@@ -94,3 +89,42 @@ function getInterpolatedChar(from, to, frame) {
 morphText();
 
 
+//contact-form submit
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxg0VqpkPU92zrIB0TbpW25POML77NSQyC8oZROQ04dnUNyzZUnwyZuCL9g73oHlHA0/exec';
+        const form = document.forms['submit-to-google-sheet'];
+        const msg = document.querySelector('.msg');
+        const submitButton = form.querySelector('button');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // Show processing message and disable button
+            msg.innerHTML = "Processing...";
+            submitButton.disabled = true;
+            submitButton.innerHTML = "Submitting...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = "Message sent successfully!";
+
+                    // Restore button state
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = "Submit";
+
+                    setTimeout(() => {
+                        msg.innerHTML = "";
+                    }, 5000);
+
+                    form.reset();
+                })
+                .catch(error => {
+                    msg.innerHTML = "Error! Please try again.";
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = "Submit";
+                    console.error('Error!', error.message);
+                });
+            submitButton.classList.add("loading");
+            submitButton.classList.remove("loading"); // Remove after submission
+
+        });
