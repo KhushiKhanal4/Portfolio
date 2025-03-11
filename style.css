@@ -337,7 +337,9 @@ button a {
     justify-items: center; */
     gap: 10px;
     padding: 10px;
-    background-color: #1F2933;
+    background-color: #1f29335e;
+    backdrop-filter: blur(10px);
+    border: 1px solid #9fcfff67;
     border-radius: 4%;
 }
 
