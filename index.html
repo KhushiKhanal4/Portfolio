@@ -7,17 +7,18 @@
     <title>KhushiKhanal</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
-    <header>
+    <header data-aos="fade-down">
         <div class="logo">
             <span class="first-name">Khushi</span><span class="last-name">Khanal</span>
         </div>
 
         <nav>
             <ul id="nav-menu" class="nav-menu">
-                <li><a href="#">Home</a></li>
+                <li><a href="#" class="active">Home</a></li>
                 <li><a href="#about-me-section">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -32,9 +33,10 @@
     </header>
 
     <section class="hero">
-        <h1>Hi, I’m Khushi-<span class="highlight">Frontend Developer</span></h1>
-        <a href="#" class="cv-button">Read CV</a>
-        <div class="social-icons">
+        <h1 data-aos="fade-in" data-aos-offset="600" data-aos-duration="1500" data-aos-easing="ease-in-sine">Hi, I’m Khushi-<span
+                class="highlight morph-text"></span></h1>
+        <a href="#" class="cv-button" data-aos="fade-in" data-aos-offset="300" data-aos-duration="1500" data-aos-easing="ease-in-sine">Read CV</a>
+        <div class="social-icons" data-aos="fade-in" data-aos-offset="300" data-aos-duration="1500" data-aos-easing="ease-in-sine">
             <a href="https://github.com/KhushiKhanal4" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
                     <path fill="currentColor"
@@ -49,10 +51,12 @@
                 </svg>
             </a>
 
-            <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24">
+            <a href="https://www.behance.net/khushikhanal" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <path fill="currentColor"
-                        d="M13.028 2c1.125.003 1.696.009 2.189.023l.194.007c.224.008.445.018.712.03c1.064.05 1.79.218 2.427.465c.66.254 1.216.598 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428c.012.266.022.487.03.712l.006.194c.015.492.021 1.063.023 2.188l.001.746v1.31a79 79 0 0 1-.023 2.188l-.006.194c-.008.225-.018.446-.03.712c-.05 1.065-.22 1.79-.466 2.428a4.9 4.9 0 0 1-1.153 1.772a4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.427.465l-.712.03l-.194.006c-.493.014-1.064.021-2.189.023l-.746.001h-1.309a78 78 0 0 1-2.189-.023l-.194-.006a63 63 0 0 1-.712-.031c-1.064-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.771-1.153a4.9 4.9 0 0 1-1.154-1.772c-.247-.637-.415-1.363-.465-2.428l-.03-.712l-.005-.194A79 79 0 0 1 2 13.028v-2.056a79 79 0 0 1 .022-2.188l.007-.194c.008-.225.018-.446.03-.712c.05-1.065.218-1.79.465-2.428A4.9 4.9 0 0 1 3.68 3.678a4.9 4.9 0 0 1 1.77-1.153c.638-.247 1.363-.415 2.428-.465c.266-.012.488-.022.712-.03l.194-.006a79 79 0 0 1 2.188-.023zM12 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10m0 2a3 3 0 1 1 .001 6a3 3 0 0 1 0-6m5.25-3.5a1.25 1.25 0 0 0 0 2.5a1.25 1.25 0 0 0 0-2.5" />
+                        d="M7.354 11.107V9.502c0-.095 0-.133.124-.133c1.063 0 1.927-.063 2.356.19c.43.252.448.6.455.704s.004.253-.196.616s-1.095.37-1.741.37h-.855c-.105 0-.143-.038-.143-.142m2.946 1.682a1.12 1.12 0 0 1-.324 1.662a1.7 1.7 0 0 1-.646.133H7.487c-.095 0-.133 0-.133-.123v-1.9c0-.095 0-.133.124-.133h1.225c.76 0 1.235-.067 1.597.36" />
+                    <path fill="currentColor"
+                        d="M16.989 11.909a.87.87 0 0 0-.566-.498a1.84 1.84 0 0 0-1.492.235a1.43 1.43 0 0 0-.4.809c0 .107 0 .127.127.127h2.37c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526m0 0a.87.87 0 0 0-.566-.498a1.84 1.84 0 0 0-1.492.235a1.43 1.43 0 0 0-.4.809c0 .107 0 .127.127.127h2.37c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526M18.1 2.5H6.4a3.9 3.9 0 0 0-3.9 3.9v11.7A3.9 3.9 0 0 0 6.4 22h11.7a3.9 3.9 0 0 0 3.9-3.9V6.4a3.9 3.9 0 0 0-3.9-3.9m-3.822 6.21c0-.077 0-.107.088-.107h3.159v.82s.003.058-.049.058h-3.061c-.137 0-.137 0-.137-.136zm-2.925 7.167c-1.2.653-3.217.39-5.606.39V8.184h3.812c.975 0 2.135.244 2.447 1.277a1.95 1.95 0 0 1-.975 2.409a2.213 2.213 0 0 1 .312 4.007zm7.264-2.301h-3.9c-.107 0-.205.058-.186.195c.117.575.38 1.18.976 1.268a1.47 1.47 0 0 0 1.686-.663s.049-.059.078-.059h1.268s.078 0 .058.068a3.5 3.5 0 0 1-.585 1.043a3.05 3.05 0 0 1-4.787-.75a2.5 2.5 0 0 1-.253-.878a3.023 3.023 0 0 1 2.203-3.597c2.213-.478 3.617 1.043 3.617 3.188a.165.165 0 0 1-.185.185zm-2.184-2.165a1.8 1.8 0 0 0-.771-.042c-.257.04-.487.089-.721.277c-.234.187-.358.503-.4.809c0 .107 0 .127.127.127h2.36c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526a.87.87 0 0 0-.565-.498z" />
                 </svg>
             </a>
         </div>
@@ -68,7 +72,7 @@
 
     <div id="about-me-section" class="about-me-container">
 
-        <div class="about-me-text">
+        <div class="about-me-text" data-aos="fade-right" data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
             <h2 class="section-title">About</h2>
             <p class="about-me">I’m a self-taught<span> UI/UX designer</span> and <span> front-end developer </span>
                 with a passion for crafting intuitive, user-centered designs and seamless digital experiences. With a
@@ -84,7 +88,7 @@
 
         </div>
 
-        <div class=" image-container">
+        <div data-aos="fade-left" data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine" class=" image-container">
             <img src="freepik__adjust__76785.png" alt="" width="100%" height="auto">
             <p class="quote">"Designing with passion, coding with purpose."</p>
         </div>
@@ -94,31 +98,31 @@
     <div id="skills" class="skills-section">
         <h2 class="section-title">Skills</h2>
         <div class="skills-container">
-            <div class="skill">
+            <div class="skill" data-aos=zoom-in-up data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                 <img src="html_1051277.png" alt="HTML" width="50" height="50">
                 <p>HTML</p>
             </div>
-            <div class="skill">
+            <div class="skill"data-aos=zoom-in-up data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                 <img src="css-3_732190.png" alt="CSS" width="50" height="50">
                 <p>CSS</p>
             </div>
-            <div class="skill">
+            <div class="skill"data-aos=zoom-in-up data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                 <img src="js_5968292.png" alt="JavaScript" width="50" height="50">
                 <p>JavaScript</p>
             </div>
-            <div class="skill">
+            <div class="skill"data-aos=zoom-in-up data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                 <img src="physics_1126012.png" alt="React" width="50" height="50">
                 <p>React</p>
             </div>
-            <div class="skill">
+            <div class="skill"data-aos=zoom-in-up data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                 <img src="figma_5968705.png" alt="Figma" width="50" height="50">
                 <p>Figma</p>
             </div>
-            <div class="skill">
+            <div class="skill"data-aos=zoom-in-up data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                 <img src="Tailwind CSS.png" alt="Tailwind" width="50" height="50">
                 <p>Tailwind</p>
             </div>
-            <div class="skill">
+            <div class="skill" data-aos=zoom-in-up data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                 <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git" width="50"
                     height="50">
                 <p>Git</p>
@@ -134,7 +138,7 @@
 
             <h1>My Ux Case Studies</h1>
 
-            <div class="ux-project">
+            <div class="ux-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
 
                 <div class="about-project">
                     <h3>StudentNest</h3>
@@ -156,8 +160,8 @@
 
             <h1>My UI/UX Projects</h1>
 
-            <div class="ui-projects">
-                <div class="ui-project">
+            <div class="ui-projects" >
+                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                     <img src="MacBook Mockup, Floating.png" alt="" width="100%" height="auto">
                     <h3>Scoopity</h3>
                     <p>A simple and intuitive website design for an ice cream brand showcasing its flavors, features,
@@ -167,7 +171,7 @@
                             target="_blank">View Prototype</a>
                     </button>
                 </div>
-                <div class="ui-project">
+                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                     <img src="podpick-mockup.png" alt="" width="100%" height="auto">
                     <h3>PodPick</h3>
                     <p>An e-commerce app design for buying earpods from different brands having easy navigation,clear
@@ -177,7 +181,7 @@
                             target="_blank">View Prototype</a>
                     </button>
                 </div>
-                <div class="ui-project">
+                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                     <img src="372d199e690.png" alt="" width="100%" height="auto">
                     <h3>BreatheX</h3>
                     <p>A simple landing page design for a yoga website. It features a calming design, engaging visuals,
@@ -192,7 +196,7 @@
             <h1>My Frontend Projects</h1>
 
             <div class="ui-projects">
-                <div class="ui-project">
+                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                     <img src="LipLuxe.png" alt="" width="100%" height="auto">
                     <h3>LipLuxe</h3>
                     <div class="language">
@@ -203,7 +207,7 @@
                         <a href="https://lip-luxe-khushikhanal4s-projects.vercel.app/" target="_blank">Live Preview</a>
                     </button>
                 </div>
-                <div class="ui-project">
+                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                     <img src="Password.png" alt="" width="100%" height="auto">
                     <h3>Password Generator</h3>
                     <div class="language">
@@ -214,7 +218,7 @@
                         <a href="https://khushikhanal4.github.io/Password-generator/" target="_blank">Live Preview</a>
                     </button>
                 </div>
-                <div class="ui-project">
+                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                     <img src="Currency.png" alt="" width="100%" height="auto">
                     <h3>Currency Converter</h3>
                     <div class="language">
@@ -225,7 +229,7 @@
                         <a href="https://khushikhanal4.github.io/Currency-Converter/" target="_blank">Live Preview</a>
                     </button>
                 </div>
-                <div class="ui-project">
+                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                     <img src="ToDo.png" alt="" width="100%" height="auto">
                     <h3>To-do-list</h3>
                     <div class="language">
@@ -236,12 +240,13 @@
                         <a href="https://khushikhanal4.github.io/To-do-react/" target="_blank">Live Preview</a>
                     </button>
                 </div>
-                <div class="ui-project">
+                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine">
                     <img src="Recipe.png" alt="" width="100%" height="auto">
                     <h3>Recipe Realm</h3>
                     <div class="language">
-                        <p>React</p>
-                        <p>Tailwind</p>
+                        <p>HTML</p>
+                        <p>CSS</p>
+                        <p>JS</p>
                     </div>
                     <button style="width: 70% ;margin-left: 12px; margin-bottom:18px;" class="button">
                         <a href="https://khushikhanal4.github.io/RecipeRealm/" target="_blank">Live Preview</a>
@@ -280,10 +285,12 @@
                             </svg>
                         </a>
 
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 24 24">
+                        <a href="https://www.behance.net/khushikhanal" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
                                 <path fill="currentColor"
-                                    d="M13.028 2c1.125.003 1.696.009 2.189.023l.194.007c.224.008.445.018.712.03c1.064.05 1.79.218 2.427.465c.66.254 1.216.598 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428c.012.266.022.487.03.712l.006.194c.015.492.021 1.063.023 2.188l.001.746v1.31a79 79 0 0 1-.023 2.188l-.006.194c-.008.225-.018.446-.03.712c-.05 1.065-.22 1.79-.466 2.428a4.9 4.9 0 0 1-1.153 1.772a4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.427.465l-.712.03l-.194.006c-.493.014-1.064.021-2.189.023l-.746.001h-1.309a78 78 0 0 1-2.189-.023l-.194-.006a63 63 0 0 1-.712-.031c-1.064-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.771-1.153a4.9 4.9 0 0 1-1.154-1.772c-.247-.637-.415-1.363-.465-2.428l-.03-.712l-.005-.194A79 79 0 0 1 2 13.028v-2.056a79 79 0 0 1 .022-2.188l.007-.194c.008-.225.018-.446.03-.712c.05-1.065.218-1.79.465-2.428A4.9 4.9 0 0 1 3.68 3.678a4.9 4.9 0 0 1 1.77-1.153c.638-.247 1.363-.415 2.428-.465c.266-.012.488-.022.712-.03l.194-.006a79 79 0 0 1 2.188-.023zM12 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10m0 2a3 3 0 1 1 .001 6a3 3 0 0 1 0-6m5.25-3.5a1.25 1.25 0 0 0 0 2.5a1.25 1.25 0 0 0 0-2.5" />
+                                    d="M7.354 11.107V9.502c0-.095 0-.133.124-.133c1.063 0 1.927-.063 2.356.19c.43.252.448.6.455.704s.004.253-.196.616s-1.095.37-1.741.37h-.855c-.105 0-.143-.038-.143-.142m2.946 1.682a1.12 1.12 0 0 1-.324 1.662a1.7 1.7 0 0 1-.646.133H7.487c-.095 0-.133 0-.133-.123v-1.9c0-.095 0-.133.124-.133h1.225c.76 0 1.235-.067 1.597.36" />
+                                <path fill="currentColor"
+                                    d="M16.989 11.909a.87.87 0 0 0-.566-.498a1.84 1.84 0 0 0-1.492.235a1.43 1.43 0 0 0-.4.809c0 .107 0 .127.127.127h2.37c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526m0 0a.87.87 0 0 0-.566-.498a1.84 1.84 0 0 0-1.492.235a1.43 1.43 0 0 0-.4.809c0 .107 0 .127.127.127h2.37c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526M18.1 2.5H6.4a3.9 3.9 0 0 0-3.9 3.9v11.7A3.9 3.9 0 0 0 6.4 22h11.7a3.9 3.9 0 0 0 3.9-3.9V6.4a3.9 3.9 0 0 0-3.9-3.9m-3.822 6.21c0-.077 0-.107.088-.107h3.159v.82s.003.058-.049.058h-3.061c-.137 0-.137 0-.137-.136zm-2.925 7.167c-1.2.653-3.217.39-5.606.39V8.184h3.812c.975 0 2.135.244 2.447 1.277a1.95 1.95 0 0 1-.975 2.409a2.213 2.213 0 0 1 .312 4.007zm7.264-2.301h-3.9c-.107 0-.205.058-.186.195c.117.575.38 1.18.976 1.268a1.47 1.47 0 0 0 1.686-.663s.049-.059.078-.059h1.268s.078 0 .058.068a3.5 3.5 0 0 1-.585 1.043a3.05 3.05 0 0 1-4.787-.75a2.5 2.5 0 0 1-.253-.878a3.023 3.023 0 0 1 2.203-3.597c2.213-.478 3.617 1.043 3.617 3.188a.165.165 0 0 1-.185.185zm-2.184-2.165a1.8 1.8 0 0 0-.771-.042c-.257.04-.487.089-.721.277c-.234.187-.358.503-.4.809c0 .107 0 .127.127.127h2.36c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526a.87.87 0 0 0-.565-.498z" />
                             </svg>
                         </a>
                     </div>
@@ -310,7 +317,13 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
     <script>
+        AOS.init({
+            duration: 1000, // Animation duration (1s)
+            once: true, // Animation runs only once
+        });
         const scriptURL = '<https://script.google.com/macros/s/AKfycbxrB-aSzauIP0XFwqgrBKjRp_Lp4SZtfq15keMUkIqsHXPL6f9gy6nwHgYl4FIkvbRy/exec>'
         const form = document.forms['submit-to-google-sheet']
         const msg = document.querySelector('.msg')

@@ -56,8 +56,8 @@ nav ul li a {
     transition: color 0.3s;
 }
 
-nav ul li a.active,
-nav ul li a:hover {
+.nav-menu li a.active,
+.nav-menu li a:hover {
     color: #DD5245;
 }
 
