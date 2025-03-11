@@ -1,5 +1,5 @@
 // Get references to the hamburger and navigation menu
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
 
@@ -10,25 +10,25 @@ document.addEventListener("DOMContentLoaded", function() {
     navMenu.addEventListener('click', () => {
         navMenu.classList.remove('active');
     });
+}); const navLinks = document.querySelectorAll(".nav-menu li a");
+
+navLinks.forEach(link => {
+    link.addEventListener("click", function () {
+        // Remove 'active' class from all links
+        navLinks.forEach(nav => nav.classList.remove("active"));
+
+        // Add 'active' class to the clicked link
+        this.classList.add("active");
+    });
 });
 
-document.getElementById('contact-form').addEventListener('submit', function(event) {
+
+document.getElementById('contact-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Stops the page from reloading
     console.log("Form submitted!"); // Debugging message
     // Your form submission logic here
-
-    const navLinks = document.querySelectorAll(".nav-menu li a");
-
-    navLinks.forEach(link => {
-        link.addEventListener("click", function () {
-            // Remove 'active' class from all links
-            navLinks.forEach(nav => nav.classList.remove("active"));
-
-            // Add 'active' class to the clicked link
-            this.classList.add("active");
-        });
-    });
 });
+
 
 
 // Typewriter Effect

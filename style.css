@@ -548,7 +548,8 @@ footer p {
         display: none;
         opacity: 0;
         transition: visibility 0s, opacity 0.5s linear;
-}
+    }
+
     #nav-menu.active {
         display: flex;
         opacity: 1;
