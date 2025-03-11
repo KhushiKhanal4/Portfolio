@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     navMenu.addEventListener('click', () => {
         navMenu.classList.remove('active');
     });
-}); 
+});
 
 // smooth navigation
 const navLinks = document.querySelectorAll(".nav-menu li a");
@@ -27,7 +27,7 @@ navLinks.forEach(link => {
 
 // morph effect
 
-const texts = ["UI/UX Designer","Frontend Developer" ];
+const texts = ["UI/UX Designer", "Frontend Developer"];
 let textIndex = 0;
 const textElement = document.querySelector(".morph-text");
 
@@ -92,39 +92,39 @@ morphText();
 //contact-form submit
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxg0VqpkPU92zrIB0TbpW25POML77NSQyC8oZROQ04dnUNyzZUnwyZuCL9g73oHlHA0/exec';
-        const form = document.forms['submit-to-google-sheet'];
-        const msg = document.querySelector('.msg');
-        const submitButton = form.querySelector('button');
+const form = document.forms['submit-to-google-sheet'];
+const msg = document.querySelector('.msg');
+const submitButton = form.querySelector('button');
 
-        form.addEventListener('submit', e => {
-            e.preventDefault();
+form.addEventListener('submit', e => {
+    e.preventDefault();
 
-            // Show processing message and disable button
-            msg.innerHTML = "Processing...";
-            submitButton.disabled = true;
-            submitButton.innerHTML = "Submitting...";
+    // Show processing message and disable button
+    msg.innerHTML = "Processing...";
+    submitButton.disabled = true;
+    submitButton.innerHTML = "Submitting...";
 
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => {
-                    msg.innerHTML = "Message sent successfully!";
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+            msg.innerHTML = "Message sent successfully!";
 
-                    // Restore button state
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = "Submit";
+            // Restore button state
+            submitButton.disabled = false;
+            submitButton.innerHTML = "Submit";
 
-                    setTimeout(() => {
-                        msg.innerHTML = "";
-                    }, 5000);
+            setTimeout(() => {
+                msg.innerHTML = "";
+            }, 5000);
 
-                    form.reset();
-                })
-                .catch(error => {
-                    msg.innerHTML = "Error! Please try again.";
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = "Submit";
-                    console.error('Error!', error.message);
-                });
-            submitButton.classList.add("loading");
-            submitButton.classList.remove("loading"); // Remove after submission
-
+            form.reset();
+        })
+        .catch(error => {
+            msg.innerHTML = "Error! Please try again.";
+            submitButton.disabled = false;
+            submitButton.innerHTML = "Submit";
+            console.error('Error!', error.message);
         });
+    submitButton.classList.add("loading");
+    submitButton.classList.remove("loading"); // Remove after submission
+
+});
