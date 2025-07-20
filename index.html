@@ -2,355 +2,933 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KhushiKhanal</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khushi - UI/UX Designer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --tertiary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --dark-bg: #0a0a0a;
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --text-primary: #ffffff;
+      --text-secondary: #b8bcc8;
+      --accent-blue: #00d4ff;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ff006e;
+      --border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-blue) transparent;
+    }
+
+    *::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background: var(--accent-blue);
+      border-radius: 3px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+      z-index: -1;
+      animation: backgroundShift 20s ease-in-out infinite;
+    }
+
+    @keyframes backgroundShift {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 1rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-menu li a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent-blue);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-menu li a:hover,
+    .nav-menu li a.active {
+      color: var(--text-primary);
+      background: var(--glass-bg);
+    }
+
+    .nav-menu li a:hover::before,
+    .nav-menu li a.active::before {
+      width: 80%;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 3rem 6rem;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .h3 {
+      font-size: 1.5rem;
+      margin: 1.5rem 0rem;
+      font-weight: 600;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 0%, #8b5cf6 50%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
+      }
+
+      to {
+        filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.5));
+      }
+    }
+
+    .hero span {
+      background: var(--secondary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .morph-text {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 2rem;
+      padding: 1rem 2rem;
+      background: var(--glass-bg);
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 3rem;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 3rem;
+      text-align: center;
+      font-weight: 700;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* About Section */
+    .about {
+      background: var(--card-bg);
+      border-radius: 30px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      margin: 4rem auto;
+    }
+
+    .about p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about strong {
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .skill {
+      background: var(--glass-bg);
+      padding: 1rem 1rem;
+      border-radius: 20px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .skill::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--tertiary-gradient);
+      opacity: 0.1;
+      transition: all 0.4s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+    }
+
+    .skill:hover::before {
+      left: 0;
+    }
+
+    /* Projects Section */
+    .projects {
+      margin: 6rem auto;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      justify-items: center;
+      gap: 2rem;
+      padding: 3rem;
+      border-radius: 25px;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-gradient);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+      border-color: var(--accent-purple);
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .project-card p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+    .project-cards {
+      background: var(--card-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      justify-items: center;
+      gap: 2rem;
+      padding: 3rem;
+      border-radius: 25px;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .project-cards::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-gradient);
+    }
+
+    .project-cards:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+      border-color: var(--accent-purple);
+    }
+
+    .project-cards h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .project-cards p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--secondary-gradient);
+      color: white;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.5s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(245, 87, 108, 0.4);
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    /* Contact Section */
+    .contact {
+      text-align: center;
+      background: var(--card-bg);
+      border-radius: 30px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(20px);
+      margin: 4rem auto;
+    }
+
+    .contact p {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 1rem;
+      text-align: center;
+      background: rgba(10, 10, 10, 0.8);
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .header {
+        padding: 1rem 2rem;
+      }
+
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 80%;
+        padding: 2rem;
+        border-radius: 0 0 20px 20px;
+        border: 1px solid var(--border-color);
+        border-top: none;
+      }
+
+      .nav-menu.show-menu {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hero {
+        padding: 6rem 2rem 4rem;
+      }
+
+      section {
+        padding: 4rem 2rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .project-card {
+        padding: 2rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .header {
+        padding: 1rem;
+      }
+
+      .nav-menu {
+        width: 100%;
+        padding: 1.5rem;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .hero {
+        padding: 5rem 1rem 3rem;
+      }
+    }
+
+    /* Loading Animation */
+    .loading {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Floating Elements */
+    .floating-element {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(10deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header data-aos="fade-down">
-        <div class="logo">
-            <span class="first-name">Khushi</span><span class="last-name">Khanal</span>
-        </div>
+  <!-- Floating Elements -->
+  <div class="floating-element" style="top: 20%; left: 10%; animation-delay: -2s;">
+    <i class="fas fa-code" style="font-size: 2rem; color: var(--accent-blue);"></i>
+  </div>
+  <div class="floating-element" style="top: 60%; right: 10%; animation-delay: -4s;">
+    <i class="fas fa-palette" style="font-size: 1.5rem; color: var(--accent-purple);"></i>
+  </div>
+  <div class="floating-element" style="bottom: 30%; left: 15%; animation-delay: -1s;">
+    <i class="fas fa-rocket" style="font-size: 1.8rem; color: var(--accent-pink);"></i>
+  </div>
 
-        <nav>
-            <ul id="nav-menu" class="nav-menu">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#about-me-section">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#Contact">Contact</a></li>
+  <!-- Header -->
+  <header class="header">
+    <h1>Khushi</h1>
+    <nav class="nav">
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <a href="https://drive.google.com/file/d/108pWouIKiE3zk51BmES-VvbTlMNZtJE3/view?usp=sharing" target="_blank">
+        <button class="btn">Resume</button></a>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
 
-            </ul>
-        </nav>
-        <div class="hamburger" id="hamburger">
-            ☰
-        </div>
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Hello, I'm <span>Khushi</span></h2>
+    <p class="morph-text">A UI/UX Designer | Frontend Developer</p>
+  </section>
 
-    </header>
+  <!-- About Section -->
+  <section class="about" id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate <strong>UI/UX designer</strong> with hands-on internship experience,
+      focused on creating intuitive, accessible, and meaningful designs. I enjoy
+      solving real user problems through thoughtful design and love collaborating on
+      impactful digital products.
+    </p>
+  </section>
 
-    <section class="hero">
-        <h1 data-aos="fade-in" data-aos-offset="300" data-aos-duration="1500" data-aos-easing="ease-in-sine">Hi, I’m
-            Khushi-<span class="highlight morph-text"></span></h1>
-        <a href="https://drive.google.com/file/d/108pWouIKiE3zk51BmES-VvbTlMNZtJE3/view?usp=sharing" target="_blank" class="cv-button" data-aos="fade-in" data-aos-offset="300" data-aos-duration="1500"
-            data-aos-easing="ease-in-sine">Read CV</a>
-        <div class="social-icons" data-aos="fade-in" data-aos-offset="300" data-aos-duration="1500"
-            data-aos-easing="ease-in-sine">
-            <a href="https://github.com/KhushiKhanal4" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
-                    <path fill="currentColor"
-                        d="M8 0c4.42 0 8 3.58 8 8a8.01 8.01 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38c0-.27.01-1.13.01-2.2c0-.75-.25-1.23-.54-1.48c1.78-.2 3.65-.88 3.65-3.95c0-.88-.31-1.59-.82-2.15c.08-.2.36-1.02-.08-2.12c0 0-.67-.22-2.2.82c-.64-.18-1.32-.27-2-.27s-1.36.09-2 .27c-1.53-1.03-2.2-.82-2.2-.82c-.44 1.1-.16 1.92-.08 2.12c-.51.56-.82 1.28-.82 2.15c0 3.06 1.86 3.75 3.64 3.95c-.23.2-.44.55-.51 1.07c-.46.21-1.61.55-2.33-.66c-.15-.24-.6-.83-1.23-.82c-.67.01-.27.38.01.53c.34.19.73.9.82 1.13c.16.45.68 1.31 2.69.94c0 .67.01 1.3.01 1.49c0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8" />
-                </svg>
-            </a>
+  <!-- Skills Section -->
+  <section class="skills" id="skills" data-aos="fade-up">
+    <h2>My Skills</h2>
+    <div class="skills-grid">
+      <div class="skill" data-aos="zoom-in-up">User Research</div>
+      <div class="skill" data-aos="zoom-in-up">Wireframing (Figma)</div>
+      <div class="skill" data-aos="zoom-in-up">Prototyping</div>
+      <div class="skill" data-aos="zoom-in-up">Visual Design</div>
+      <div class="skill" data-aos="zoom-in-up">Interaction Design</div>
+      <div class="skill" data-aos="zoom-in-up">Usability Testing</div>
+      <div class="skill" data-aos="zoom-in-up">HTML, CSS, JavaScript</div>
+      <div class="skill" data-aos="zoom-in-up">Responsive Design</div>
+    </div>
+  </section>
 
-            <a href="https://www.linkedin.com/in/khushi-khanal/" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
-                    <path fill="currentColor"
-                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248c-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586c.173-.431.568-.878 1.232-.878c.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252c-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                </svg>
-            </a>
+  <!-- Projects -->
+  <section class="projects" id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <h3  class="h3">Case Study</h3>
 
-            <a href="https://www.behance.net/khushikhanal" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                        d="M7.354 11.107V9.502c0-.095 0-.133.124-.133c1.063 0 1.927-.063 2.356.19c.43.252.448.6.455.704s.004.253-.196.616s-1.095.37-1.741.37h-.855c-.105 0-.143-.038-.143-.142m2.946 1.682a1.12 1.12 0 0 1-.324 1.662a1.7 1.7 0 0 1-.646.133H7.487c-.095 0-.133 0-.133-.123v-1.9c0-.095 0-.133.124-.133h1.225c.76 0 1.235-.067 1.597.36" />
-                    <path fill="currentColor"
-                        d="M16.989 11.909a.87.87 0 0 0-.566-.498a1.84 1.84 0 0 0-1.492.235a1.43 1.43 0 0 0-.4.809c0 .107 0 .127.127.127h2.37c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526m0 0a.87.87 0 0 0-.566-.498a1.84 1.84 0 0 0-1.492.235a1.43 1.43 0 0 0-.4.809c0 .107 0 .127.127.127h2.37c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526M18.1 2.5H6.4a3.9 3.9 0 0 0-3.9 3.9v11.7A3.9 3.9 0 0 0 6.4 22h11.7a3.9 3.9 0 0 0 3.9-3.9V6.4a3.9 3.9 0 0 0-3.9-3.9m-3.822 6.21c0-.077 0-.107.088-.107h3.159v.82s.003.058-.049.058h-3.061c-.137 0-.137 0-.137-.136zm-2.925 7.167c-1.2.653-3.217.39-5.606.39V8.184h3.812c.975 0 2.135.244 2.447 1.277a1.95 1.95 0 0 1-.975 2.409a2.213 2.213 0 0 1 .312 4.007zm7.264-2.301h-3.9c-.107 0-.205.058-.186.195c.117.575.38 1.18.976 1.268a1.47 1.47 0 0 0 1.686-.663s.049-.059.078-.059h1.268s.078 0 .058.068a3.5 3.5 0 0 1-.585 1.043a3.05 3.05 0 0 1-4.787-.75a2.5 2.5 0 0 1-.253-.878a3.023 3.023 0 0 1 2.203-3.597c2.213-.478 3.617 1.043 3.617 3.188a.165.165 0 0 1-.185.185zm-2.184-2.165a1.8 1.8 0 0 0-.771-.042c-.257.04-.487.089-.721.277c-.234.187-.358.503-.4.809c0 .107 0 .127.127.127h2.36c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526a.87.87 0 0 0-.565-.498z" />
-                </svg>
-            </a>
-        </div>
+    <div class="project-card">
+      <div>
+        <h3>UX Case Study</h3>
+        <p>A UX case study focused on creating a seamless, user-friendly platform for students to find housing easily.
+          It features intuitive design, advanced search filters,roommate finder, and secure communication to enhance the
+          renting experience.</p>
 
-    </section>
-
-    <!-- Background Shapes -->
-    <div class="circleLarge"></div>
-    <div class="circleSmall"></div>
-    <div class="rect-left"></div>
-    <div class="rect-right"></div>
-
-
-    <div id="about-me-section" class="about-me-container">
-
-        <div class="about-me-text" data-aos="fade-right" data-aos-offset="200" data-aos-duration="1000"
-            data-aos-easing="ease-in-sine">
-            <h2 class="section-title">About</h2>
-            <p class="about-me">I’m a self-taught<span> UI/UX designer</span> and <span> front-end developer </span>
-                with a strong passion for crafting intuitive, user-centered designs that enhance digital experiences. My
-                expertise lies in Figma and design principles, allowing me to create visually engaging and user-friendly
-                interfaces. <br> While I have learned React and front-end development with HTML, CSS, and JavaScript, my
-                primary focus is on UI/UX design. However, I remain open to contributing as a front-end developer when
-                needed, ensuring seamless functionality and responsiveness in digital products.
-                <br> <br>
-                Let's create meaningful and impactful designs together!
-            </p>
-            <button class="button">
-                <a href="#Contact">Contact me</a>
-            </button>
-
-        </div>
-
-        <div data-aos="fade-left" data-aos-offset="300" data-aos-duration="1000" data-aos-easing="ease-in-sine"
-            class=" image-container">
-            <img src="images/freepik__adjust__76785.png" alt="" width="100%" height="auto">
-            <p class="quote">"Designing with passion, coding with purpose."</p>
-        </div>
-
+        <a href="https://www.behance.net/gallery/220643193/StudentNest-Student-Housing-UX-Case-Study" class="btn">
+          <i class="fas fa-external-link-alt"></i>
+          View Case Study
+        </a>
+      </div>
+      <div>
+        <img src="images/LandingPage.png" alt="" width="100%" style="border-radius: 20px; margin-top: 1rem;">
+      </div>
     </div>
 
-    <div id="skills" class="skills-section">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-container">
-            <div class="skill" data-aos=zoom-in-up data-aos-offset="200" data-aos-duration="800"
-                data-aos-easing="ease-in-sine">
-                <img src="images/html_1051277.png" alt="HTML" width="50" height="50">
-                <p>HTML</p>
-            </div>
-            <div class="skill" data-aos=zoom-in-up data-aos-offset="200" data-aos-duration="800"
-                data-aos-easing="ease-in-sine">
-                <img src="images/css-3_732190.png" alt="CSS" width="50" height="50">
-                <p>CSS</p>
-            </div>
-            <div class="skill" data-aos=zoom-in-up data-aos-offset="200" data-aos-duration="800"
-                data-aos-easing="ease-in-sine">
-                <img src="images/js_5968292.png" alt="JavaScript" width="50" height="50">
-                <p>JavaScript</p>
-            </div>
-            <div class="skill" data-aos=zoom-in-up data-aos-offset="200" data-aos-duration="800"
-                data-aos-easing="ease-in-sine">
-                <img src="images/physics_1126012.png" alt="React" width="50" height="50">
-                <p>React</p>
-            </div>
-            <div class="skill" data-aos=zoom-in-up data-aos-offset="200" data-aos-duration="800"
-                data-aos-easing="ease-in-sine">
-                <img src="images/figma_5968705.png" alt="Figma" width="50" height="50">
-                <p>Figma</p>
-            </div>
-            <div class="skill" data-aos=zoom-in-up data-aos-offset="200" data-aos-duration="800"
-                data-aos-easing="ease-in-sine">
-                <img src="images/Tailwind CSS.png" alt="Tailwind" width="50" height="50">
-                <p>Tailwind</p>
-            </div>
-            <div class="skill" data-aos=zoom-in-up data-aos-offset="200" data-aos-duration="800"
-                data-aos-easing="ease-in-sine">
-                <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git" width="50"
-                    height="50">
-                <p>Git</p>
-            </div>
-
-        </div>
-
+   <h3 class="h3">UI/UX Projects</h3>
+<div class="grid">
+  <!-- Project 1 -->
+  <div class="project-cards">
+    <img src="images\Jewelery.png" alt="Jewelry E-commerce" width="100%" style="border-radius: 20px;">
+    <div style="margin-top: -30px;">
+      <h3>Jewelry E-commerce Website Landing Page</h3>
+      <a href="https://www.figma.com/proto/WZ8Ik90EazugaIaT3GJGzI/Projects?page-id=13%3A94788&node-id=21-21600&viewport=702%2C509%2C0.07&t=PyJ3hTVrBvR7OO1z-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=21%3A21601"
+        target="_blank" class="btn">
+        <i class="fas fa-external-link-alt"></i>
+        View Prototype
+      </a>
     </div>
+  </div>
 
-    <div id="projects" class="projects-section">
-        <h2 class="section-title">Projects</h2>
-        <div class="projects-container">
-
-            <h1>My Ux Case Study</h1>
-
-            <div class="ux-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000"
-                data-aos-easing="ease-in-sine">
-
-                <div class="about-project">
-                    <h3>StudentNest</h3>
-                    <p>A UX case study focused on creating a seamless, user-friendly platform for students to find
-                        housing easily. It features intuitive design, advanced search filters,roommate finder, and
-                        secure communication to enhance the renting experience.</p>
-                    <button class="button">
-                        <a href="https://www.behance.net/gallery/220643193/StudentNest-Student-Housing-UX-Case-Study"
-                            target="_blank">View Case Study</a>
-                    </button>
-                </div>
-                <a href="https://www.behance.net/gallery/220643193/StudentNest-Student-Housing-UX-Case-Study"
-                    target="_blank">
-                    <img class="view-cursor" src="images/LandingPage.png" alt="Thumbnail" width="100%" height="auto">
-                </a>
-
-
-            </div>
-
-            <h1>My UI/UX Projects</h1>
-
-            <div class="ui-projects">
-                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000"
-                    data-aos-easing="ease-in-sine">
-                    <img src="images/MacBook Mockup, Floating.png" alt="" width="100%" height="auto">
-                    <h3>Scoopity</h3>
-                    <p>A simple and intuitive website design for an ice cream brand showcasing its flavors, features,
-                        reviews,store locations and contact form for an easy and engaging user experience.</p>
-                    <button style="width: 70%; height: 20%; margin-left: 12px; margin-bottom:18px;" class="button">
-                        <a href="https://www.figma.com/proto/4QGfCrc1YKAvwhhIDBUk1i/Ice-Cream?node-id=79-185&t=jhDebU0r2LZJd5Ps-1&starting-point-node-id=79%3A185&show-proto-sidebar=1"
-                            target="_blank">View Prototype</a>
-                    </button>
-                </div>
-                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000"
-                    data-aos-easing="ease-in-sine">
-                    <img src="images/podpick-mockup.png" alt="" width="100%" height="auto">
-                    <h3>PodPick</h3>
-                    <p>An e-commerce app design for buying earpods from different brands having easy navigation,clear
-                        ordering and cancellation process for a smooth shopping experience.</p>
-                    <button style="width: 70%; height: 20%; margin-left: 12px; margin-bottom:18px;" class="button">
-                        <a href="https://www.figma.com/proto/OwyfvSDLqmrft2F8dVnGIy/PodPick?node-id=0-1&t=M2PKIfiyeWfLaDZX-1"
-                            target="_blank">View Prototype</a>
-                    </button>
-                </div>
-                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000"
-                    data-aos-easing="ease-in-sine">
-                    <img src="images/372d199e690.png" alt="" width="100%" height="auto">
-                    <h3>BreatheX</h3>
-                    <p>A simple landing page design for a yoga website. It features a calming design, engaging visuals,
-                        and clear call-to-action sections to promote mindfulness and well-being.</p>
-                    <button style="width: 70%; height: 20%; margin-left: 12px; margin-bottom:18px;" class="button">
-                        <a href="https://www.figma.com/proto/xeJ6C4bcMXN111yP8UfCyf/Landing-page-for-yoga-website?node-id=1-3&t=fhed82QvPCey7Cyw-1&scaling=scale-down&content-scaling=fixed"
-                            target="_blank">View Prototype</a>
-                    </button>
-                </div>
-            </div>
-
-            <h1>My Frontend Projects</h1>
-
-            <div class="ui-projects">
-                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000"
-                    data-aos-easing="ease-in-sine">
-                    <img src="images/LipLuxe.png" alt="" width="100%" height="auto">
-                    <h3>LipLuxe</h3>
-                    <div class="language">
-                        <p>React</p>
-                        <p>Tailwind</p>
-                    </div>
-                    <button style="width: 70% ;margin-left: 12px; margin-bottom:18px;" class="button">
-                        <a href="https://lip-luxe-khushikhanal4s-projects.vercel.app/" target="_blank">Live Preview</a>
-                    </button>
-                </div>
-                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000"
-                    data-aos-easing="ease-in-sine">
-                    <img src="images/Password.png" alt="" width="100%" height="auto">
-                    <h3>Password Generator</h3>
-                    <div class="language">
-                        <p>React</p>
-                        <p>Tailwind</p>
-                    </div>
-                    <button style="width: 70% ;margin-left: 12px; margin-bottom:18px;" class="button">
-                        <a href="https://khushikhanal4.github.io/Password-generator/" target="_blank">Live Preview</a>
-                    </button>
-                </div>
-                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000"
-                    data-aos-easing="ease-in-sine">
-                    <img src="images/Currency.png" alt="" width="100%" height="auto">
-                    <h3>Currency Converter</h3>
-                    <div class="language">
-                        <p>React</p>
-                        <p>Tailwind</p>
-                    </div>
-                    <button style="width: 70% ;margin-left: 12px; margin-bottom:18px;" class="button">
-                        <a href="https://khushikhanal4.github.io/Currency-Converter/" target="_blank">Live Preview</a>
-                    </button>
-                </div>
-                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000"
-                    data-aos-easing="ease-in-sine">
-                    <img src="images/ToDo.png" alt="" width="100%" height="auto">
-                    <h3>To-do-list</h3>
-                    <div class="language">
-                        <p>React</p>
-                        <p>Tailwind</p>
-                    </div>
-                    <button style="width: 70% ;margin-left: 12px; margin-bottom:18px;" class="button">
-                        <a href="https://khushikhanal4.github.io/To-do-react/" target="_blank">Live Preview</a>
-                    </button>
-                </div>
-                <div class="ui-project" data-aos=fade-in data-aos-offset="300" data-aos-duration="1000"
-                    data-aos-easing="ease-in-sine">
-                    <img src="images/Recipe.png" alt="" width="100%" height="auto">
-                    <h3>Recipe Realm</h3>
-                    <div class="language">
-                        <p>HTML</p>
-                        <p>CSS</p>
-                        <p>JS</p>
-                    </div>
-                    <button style="width: 70% ;margin-left: 12px; margin-bottom:18px;" class="button">
-                        <a href="https://khushikhanal4.github.io/RecipeRealm/" target="_blank">Live Preview</a>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
+  <!-- Project 2 -->
+  <div class="project-cards">
+    <img src="images\doc app.png" alt="Doctor App UI" width="100%" style="border-radius: 20px;">
+    <div style="margin-top: -30px;">
+      <h3>Doctor App Home screen</h3>
+      <a href="https://www.figma.com/proto/WZ8Ik90EazugaIaT3GJGzI/Projects?page-id=13%3A1700&node-id=13-2288&viewport=45%2C86%2C0.19&t=uY9ae4VUWsu67uST-1&scaling=contain&content-scaling=fixed&starting-point-node-id=13%3A2288" class="btn">
+        <i class="fas fa-external-link-alt"></i>
+        View Prototype
+      </a>
     </div>
+  </div>
 
-    <div id="Contact" class="Contact">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Let's create something amazing together!</h3>
-                <p>Feel free to reach out to me for collaboration, project inquiries, or just to say hi. I'm always open
-                    to new opportunities and connections.</p>
-                <div class="contact-details">
-                    <p>
-                        Email:
-                        <a href="mailto:khanalkhushi123@gmail.com">khanalkhushi123@gmail.com</a>
-                    </p>
-                    <div class="socialIcons">
-                        <a href="https://github.com/KhushiKhanal4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 16 16">
-                                <path fill="currentColor"
-                                    d="M8 0c4.42 0 8 3.58 8 8a8.01 8.01 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38c0-.27.01-1.13.01-2.2c0-.75-.25-1.23-.54-1.48c1.78-.2 3.65-.88 3.65-3.95c0-.88-.31-1.59-.82-2.15c.08-.2.36-1.02-.08-2.12c0 0-.67-.22-2.2.82c-.64-.18-1.32-.27-2-.27s-1.36.09-2 .27c-1.53-1.03-2.2-.82-2.2-.82c-.44 1.1-.16 1.92-.08 2.12c-.51.56-.82 1.28-.82 2.15c0 3.06 1.86 3.75 3.64 3.95c-.23.2-.44.55-.51 1.07c-.46.21-1.61.55-2.33-.66c-.15-.24-.6-.83-1.23-.82c-.67.01-.27.38.01.53c.34.19.73.9.82 1.13c.16.45.68 1.31 2.69.94c0 .67.01 1.3.01 1.49c0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8" />
-                            </svg>
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/khushi-khanal/" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 16 16">
-                                <path fill="currentColor"
-                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248c-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586c.173-.431.568-.878 1.232-.878c.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252c-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                            </svg>
-                        </a>
-
-                        <a href="https://www.behance.net/khushikhanal" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
-                                <path fill="currentColor"
-                                    d="M7.354 11.107V9.502c0-.095 0-.133.124-.133c1.063 0 1.927-.063 2.356.19c.43.252.448.6.455.704s.004.253-.196.616s-1.095.37-1.741.37h-.855c-.105 0-.143-.038-.143-.142m2.946 1.682a1.12 1.12 0 0 1-.324 1.662a1.7 1.7 0 0 1-.646.133H7.487c-.095 0-.133 0-.133-.123v-1.9c0-.095 0-.133.124-.133h1.225c.76 0 1.235-.067 1.597.36" />
-                                <path fill="currentColor"
-                                    d="M16.989 11.909a.87.87 0 0 0-.566-.498a1.84 1.84 0 0 0-1.492.235a1.43 1.43 0 0 0-.4.809c0 .107 0 .127.127.127h2.37c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526m0 0a.87.87 0 0 0-.566-.498a1.84 1.84 0 0 0-1.492.235a1.43 1.43 0 0 0-.4.809c0 .107 0 .127.127.127h2.37c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526M18.1 2.5H6.4a3.9 3.9 0 0 0-3.9 3.9v11.7A3.9 3.9 0 0 0 6.4 22h11.7a3.9 3.9 0 0 0 3.9-3.9V6.4a3.9 3.9 0 0 0-3.9-3.9m-3.822 6.21c0-.077 0-.107.088-.107h3.159v.82s.003.058-.049.058h-3.061c-.137 0-.137 0-.137-.136zm-2.925 7.167c-1.2.653-3.217.39-5.606.39V8.184h3.812c.975 0 2.135.244 2.447 1.277a1.95 1.95 0 0 1-.975 2.409a2.213 2.213 0 0 1 .312 4.007zm7.264-2.301h-3.9c-.107 0-.205.058-.186.195c.117.575.38 1.18.976 1.268a1.47 1.47 0 0 0 1.686-.663s.049-.059.078-.059h1.268s.078 0 .058.068a3.5 3.5 0 0 1-.585 1.043a3.05 3.05 0 0 1-4.787-.75a2.5 2.5 0 0 1-.253-.878a3.023 3.023 0 0 1 2.203-3.597c2.213-.478 3.617 1.043 3.617 3.188a.165.165 0 0 1-.185.185zm-2.184-2.165a1.8 1.8 0 0 0-.771-.042c-.257.04-.487.089-.721.277c-.234.187-.358.503-.4.809c0 .107 0 .127.127.127h2.36c.117 0 .117 0 .107-.147a1.3 1.3 0 0 0-.147-.526a.87.87 0 0 0-.565-.498z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <form name="submit-to-google-sheet" class="inputs" id="contact-form">
-                    <input name="Name" type="text" placeholder="Name" required>
-                    <input name="Email" type="email" placeholder="Email" required>
-                    <textarea name="Message" id="message" cols="30" rows="10" placeholder="Message" required></textarea>
-                    <button type="submit" class="button">
-                        Submit
-                    </button>
-                    <p class="msg"></p>
-                </form>
-
-            </div>
-        </div>
-
+  <!-- Project 3 -->
+  <div class="project-cards">
+    <img src="images\Pet SHop.png" alt="Pet Shop App" width="100%" style="border-radius: 20px;">
+    <div style="margin-top: -30px;">
+      <h3>Pet Shop App</h3>
+      <a href="https://www.figma.com/proto/cRCZvYWCA9eFnFmlTh0dZM/Pet-Shop-Multi-Vendor?page-id=0%3A1&node-id=681-5772&p=f&viewport=2217%2C427%2C0.59&t=FqJeacdJwVWrrFxz-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=681%3A5772&show-proto-sidebar=1" class="btn">
+        <i class="fas fa-external-link-alt"></i>
+        View Prototype
+      </a>
     </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 Khushi Khanal | Designed & Developed with ❤️</p>
-    </footer>
+  <!-- Project 4 -->
+  <div class="project-cards">
+    <img src="images\Housekeeping.png" alt="Hospital Housekeeping Management System" width="100%" style="border-radius: 20px;">
+    <div style="margin-top: -30px;">
+      <h3>Hospital Housekeeping Management System</h3>
+      <a href="https://www.figma.com/proto/WZ8Ik90EazugaIaT3GJGzI/Projects?page-id=0%3A1&node-id=45-7850&viewport=739%2C591%2C0.22&t=xh9ZXK1YmG05yDZB-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=45%3A7850" class="btn">
+        <i class="fas fa-external-link-alt"></i>
+        View Prototype
+      </a>
+    </div>
+  </div>
 
+  <!-- Project 5 -->
+  <div class="project-cards">
+    <img src="images\Motessori.png" alt="Montessori Website UI" width="100%" style="border-radius: 20px;">
+    <div style="margin-top: -30px;">
+      <h3>Montessori Website UI</h3>
+      <a href="https://www.figma.com/proto/4KLTiqteEsYLvKiEzEncK3/Montessori?page-id=0%3A1&team_id=1404369897737685624&node-id=1-360&starting-point-node-id=1%3A360&scaling=scale-down-width&content-scaling=fixed&t=AoMJF2EbST3ocu9g-1" class="btn">
+        <i class="fas fa-external-link-alt"></i>
+        View Prototype
+      </a>
+    </div>
+  </div>
 
+  <!-- Project 6 -->
+  <div class="project-cards">
+    <img src="images\Pet Website.png" alt="Pet Shop Website" width="100%" style="border-radius: 20px;">
+    <div style="margin-top: -30px;">
+      <h3>Pet Shop Website</h3>
+      <a href="https://www.figma.com/proto/cRCZvYWCA9eFnFmlTh0dZM/Pet-Shop-Multi-Vendor?page-id=3%3A15636&node-id=84-11025&viewport=-7%2C306%2C0.09&t=RUKjLHbqxOsl0d9e-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=115%3A2877" class="btn">
+        <i class="fas fa-external-link-alt"></i>
+        View Prototype
+      </a>
+    </div>
+  </div>
+</div>
 
-    <script src="script.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  </section>
 
-    <script>
-        AOS.init({
-            duration: 1000, 
-            once: false,  
-           
+  <!-- Contact -->
+  <section class="contact" id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <p>Let's create something awesome together 💬</p>
+    <a href="mailto:khanalkhushi123@gmail.com" class="btn">
+      <i class="fas fa-envelope"></i>
+      Email Me
+    </a>
+  </section>
 
+  <footer class="footer">
+    <p>© 2025 Khushi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Hamburger Menu
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("show-menu");
+    });
+
+    // Smooth navigation
+    const navLinks = document.querySelectorAll(".nav-menu li a");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", function () {
+        // Remove 'active' class from all links
+        navLinks.forEach(nav => nav.classList.remove("active"));
+        // Add 'active' class to the clicked link
+        this.classList.add("active");
+        // Close mobile menu
+        navMenu.classList.remove("show-menu");
+      });
+    });
+
+    // Morph effect
+    const texts = ["UI/UX Designer", "Frontend Developer"];
+    let textIndex = 0;
+    const textElement = document.querySelector(".morph-text");
+
+    function morphText() {
+      let currentText = textElement.innerText;
+      let newText = texts[textIndex];
+
+      // Pad the shorter text with spaces to match the length of the longer text
+      let maxLength = Math.max(currentText.length, newText.length);
+      currentText = currentText.padEnd(maxLength, " ");
+      newText = newText.padEnd(maxLength, " ");
+
+      let chars = currentText.split("");
+      let frame = 0;
+
+      let interval = setInterval(() => {
+        let changes = 0;
+
+        chars = chars.map((char, i) => {
+          if (char !== newText[i]) {
+            changes++;
+            return getInterpolatedChar(char, newText[i], frame);
+          }
+          return char;
         });
-    </script>
 
+        textElement.innerText = chars.join("").trimEnd(); // Trim trailing spaces for display
 
+        if (changes === 0) {
+          clearInterval(interval);
+          setTimeout(() => {
+            textIndex = (textIndex + 1) % texts.length; // Loop back to the first text
+            morphText(); // Restart the morphing process
+          }, 2000); // Pause before switching
+        }
+
+        frame++;
+      }, 50); // Speed of morphing effect
+    }
+
+    function getInterpolatedChar(from, to, frame) {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ";
+      let fromIndex = chars.indexOf(from);
+      let toIndex = chars.indexOf(to);
+
+      if (fromIndex === -1) fromIndex = chars.indexOf(" ");
+      if (toIndex === -1) toIndex = chars.indexOf(" ");
+
+      if (fromIndex < toIndex) {
+        return chars[Math.min(fromIndex + frame, toIndex)];
+      } else if (fromIndex > toIndex) {
+        return chars[Math.max(fromIndex - frame, toIndex)];
+      } else {
+        return to;
+      }
+    }
+
+    // Start the infinite loop
+    morphText();
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(10, 10, 10, 0.95)';
+      } else {
+        header.style.background = 'rgba(10, 10, 10, 0.8)';
+      }
+    });
+
+    // Contact form submit (keeping your original functionality)
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxg0VqpkPU92zrIB0TbpW25POML77NSQyC8oZROQ04dnUNyzZUnwyZuCL9g73oHlHA0/exec';
+    const form = document.forms['submit-to-google-sheet'];
+
+    if (form) {
+      const msg = document.querySelector('.msg');
+      const submitButton = form.querySelector('button');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        // Show processing message and disable button
+        if (msg) msg.innerHTML = "Processing...";
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.innerHTML = "Submitting...";
+        }
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(response => {
+            if (msg) msg.innerHTML = "Message sent successfully!";
+
+            // Restore button state
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.innerHTML = "Submit";
+            }
+
+            setTimeout(() => {
+              if (msg) msg.innerHTML = "";
+            }, 5000);
+
+            form.reset();
+          })
+          .catch(error => {
+            if (msg) msg.innerHTML = "Error! Please try again.";
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.innerHTML = "Submit";
+            }
+            console.error('Error!', error.message);
+          });
+
+        if (submitButton) {
+          submitButton.classList.add("loading");
+          setTimeout(() => {
+            submitButton.classList.remove("loading");
+          }, 2000);
+        }
+      });
+    }
+
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      offset: 100,
+      easing: 'ease-out-cubic'
+    });
+  </script>
 </body>
 
 </html>
