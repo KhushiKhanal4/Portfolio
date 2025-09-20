@@ -1,0 +1,515 @@
+/* --- Base Styles --- */
+:root {
+    --bg-color: #f8f8f8;
+    --text-color: #333;
+    --primary-color: #1a1a1a;
+    --secondary-color: #555;
+    --accent-color: #4CAF50;
+    /* A soft, elegant green */
+    --border-color: #e0e0e0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3 {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
+p {
+    color: var(--secondary-color);
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* --- Navbar --- */
+
+.navbar {
+    background-color: transparent;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.resume-btn {
+    background-color: var(--primary-color);
+    color: var(--bg-color) !important;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 1px solid var(--primary-color);
+}
+
+.resume-btn:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* To remove the underline for the button on hover */
+.resume-btn::after {
+    content: none !important;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    /* Needed for absolute positioning of stickers */
+    overflow: hidden;
+    /* Hide stickers that go out of bounds */
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    z-index: 2;
+    /* Ensure text is above stickers */
+    position: relative;
+}
+
+.typewriter {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    display: inline-block;
+    border-right: 2px solid var(--accent-color);
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--accent-color);
+    }
+}
+
+/* --- Floating Stickers --- */
+.hero-stickers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Allow interaction with elements behind stickers */
+    overflow: hidden;
+}
+
+.sticker {
+    position: absolute;
+    opacity: 0.6;
+    filter: grayscale(50%) brightness(1.2);
+    /* Soften appearance */
+    transition: transform 0.5s ease-out;
+}
+
+.sticker.s1 {
+    width: 60px;
+    top: 15%;
+    left: 10%;
+    animation: float 8s ease-in-out infinite alternate-reverse;
+}
+
+.sticker.s2 {
+    width: 60px;
+    top: 30%;
+    right: 15%;
+    animation: float 10s ease-in-out infinite;
+}
+
+.sticker.s3 {
+    width: 70px;
+    bottom: 20%;
+    left: 20%;
+    animation: float 7s ease-in-out infinite alternate;
+}
+
+.sticker.s4 {
+    width: 50px;
+    top: 50%;
+    left: 5%;
+    animation: float 9s ease-in-out infinite;
+}
+
+.sticker.s5 {
+    width: 60px;
+    bottom: 20%;
+    right: 5%;
+    animation: float 11s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* --- Sections --- */
+section {
+    padding: 80px 0;
+}
+
+/* --- About Section --- */
+.about {
+    text-align: center;
+}
+
+.about-text {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* --- Projects Section --- */
+.project-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    /* Allow tabs to wrap on smaller screens */
+}
+
+.tab-button {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-button.active {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border-color: var(--primary-color);
+}
+
+.tab-button:hover:not(.active) {
+    background-color: var(--border-color);
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    display: none;
+    /* Hidden by default */
+}
+
+.project-list.active {
+    display: grid;
+    /* Display when active */
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.project-card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    /* Ensures image corners are rounded */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    /* Fixed height for consistent image size */
+    object-fit: cover;
+    /* Cover the area, cropping if necessary */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-content {
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Align items to the top for longer titles/pills */
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    /* Allow header elements to wrap if needed */
+    gap: 10px;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.category-pill {
+    background-color: var(--accent-color);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    /* Prevent pill text from breaking */
+}
+
+.project-description {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    /* Pushes the link to the bottom */
+}
+
+.project-link {
+    font-weight: 500;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+    margin-top: auto;
+    /* Push the link to the bottom */
+}
+
+.project-link:hover {
+    color: var(--accent-color);
+}
+
+/* --- Contact Section --- */
+.contact {
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+.contact-text {
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+.contact-info {
+    margin-bottom: 30px;
+}
+
+.contact-link {
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.contact-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--accent-color);
+}
+
+.contact-link:hover::after {
+    width: 100%;
+}
+
+.social-links {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .typewriter {
+        font-size: 1.8rem;
+    }
+
+    .project-tabs {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .typewriter {
+        font-size: 1.5rem;
+    }
+
+    .sticker.s1,
+    .sticker.s2,
+    .sticker.s3,
+    .sticker.s4,
+    .sticker.s5 {
+        width: 40px;
+        /* Make stickers smaller on mobile */
+    }
+}

@@ -1,934 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khushi - UI/UX Designer Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      --tertiary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      --dark-bg: #0a0a0a;
-      --card-bg: rgba(255, 255, 255, 0.08);
-      --glass-bg: rgba(255, 255, 255, 0.1);
-      --text-primary: #ffffff;
-      --text-secondary: #b8bcc8;
-      --accent-blue: #00d4ff;
-      --accent-purple: #8b5cf6;
-      --accent-pink: #ff006e;
-      --border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: var(--accent-blue) transparent;
-    }
-
-    *::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    *::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    *::-webkit-scrollbar-thumb {
-      background: var(--accent-blue);
-      border-radius: 3px;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark-bg);
-      color: var(--text-primary);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
-      z-index: -1;
-      animation: backgroundShift 20s ease-in-out infinite;
-    }
-
-    @keyframes backgroundShift {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.8;
-      }
-    }
-
-    /* Header */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 1rem;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(10, 10, 10, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-color);
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-
-    .header h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-menu li a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-weight: 500;
-      font-size: 0.95rem;
-      position: relative;
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .nav-menu li a::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: var(--accent-blue);
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
-
-    .nav-menu li a:hover,
-    .nav-menu li a.active {
-      color: var(--text-primary);
-      background: var(--glass-bg);
-    }
-
-    .nav-menu li a:hover::before,
-    .nav-menu li a.active::before {
-      width: 80%;
-    }
-
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: var(--text-primary);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 8rem 3rem 6rem;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-      z-index: -1;
-    }
-
-    .h3 {
-      font-size: 1.5rem;
-      margin: 1.5rem 0rem;
-      font-weight: 600;
-    }
-
-    .hero h2 {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #fff 0%, #8b5cf6 50%, #00d4ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: glow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      from {
-        filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
-      }
-
-      to {
-        filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.5));
-      }
-    }
-
-    .hero span {
-      background: var(--secondary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .morph-text {
-      font-size: clamp(1.2rem, 4vw, 1.8rem);
-      font-weight: 500;
-      color: var(--text-secondary);
-      font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 2rem;
-      padding: 1rem 2rem;
-      background: var(--glass-bg);
-      border-radius: 20px;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Sections */
-    section {
-      padding: 6rem 3rem;
-      max-width: 1200px;
-      margin: auto;
-      position: relative;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin-bottom: 3rem;
-      text-align: center;
-      font-weight: 700;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* About Section */
-    .about {
-      background: var(--card-bg);
-      border-radius: 30px;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(20px);
-      margin: 4rem auto;
-    }
-
-    .about p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      color: var(--text-secondary);
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .about strong {
-      color: var(--accent-blue);
-      font-weight: 600;
-    }
-
-    /* Skills Section */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .skill {
-      background: var(--glass-bg);
-      padding: 1rem 1rem;
-      border-radius: 20px;
-      text-align: center;
-      font-weight: 600;
-      font-size: 1.1rem;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(20px);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      cursor: pointer;
-    }
-
-    .skill::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--tertiary-gradient);
-      opacity: 0.1;
-      transition: all 0.4s ease;
-    }
-
-    .skill:hover {
-      transform: translateY(-10px);
-      border-color: var(--accent-blue);
-      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-    }
-
-    .skill:hover::before {
-      left: 0;
-    }
-
-    /* Projects Section */
-    .projects {
-      margin: 6rem auto;
-    }
-
-    .project-card {
-      background: var(--card-bg);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      justify-items: center;
-      gap: 2rem;
-      padding: 3rem;
-      border-radius: 25px;
-      margin-bottom: 2rem;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(20px);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: var(--primary-gradient);
-    }
-
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
-      border-color: var(--accent-purple);
-    }
-
-    .project-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-
-    .project-card p {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-
-    .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-    .project-cards {
-      background: var(--card-bg);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      justify-items: center;
-      gap: 2rem;
-      padding: 3rem;
-      border-radius: 25px;
-      margin-bottom: 2rem;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(20px);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease;
-    }
-
-    .project-cards::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: var(--primary-gradient);
-    }
-
-    .project-cards:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
-      border-color: var(--accent-purple);
-    }
-
-    .project-cards h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-
-    .project-cards p {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 2rem;
-      background: var(--secondary-gradient);
-      color: white;
-      border-radius: 15px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: all 0.5s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(245, 87, 108, 0.4);
-    }
-
-    .btn:hover::before {
-      left: 100%;
-    }
-
-    /* Contact Section */
-    .contact {
-      text-align: center;
-      background: var(--card-bg);
-      border-radius: 30px;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(20px);
-      margin: 4rem auto;
-    }
-
-    .contact p {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-    }
-
-    /* Footer */
-    .footer {
-      padding: 1rem;
-      text-align: center;
-      background: rgba(10, 10, 10, 0.8);
-      border-top: 1px solid var(--border-color);
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-
-    /* Responsive Design */
-    @media screen and (max-width: 768px) {
-      .header {
-        padding: 1rem 2rem;
-      }
-
-      .nav-menu {
-        display: none;
-        flex-direction: column;
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(20px);
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 80%;
-        padding: 2rem;
-        border-radius: 0 0 20px 20px;
-        border: 1px solid var(--border-color);
-        border-top: none;
-      }
-
-      .nav-menu.show-menu {
-        display: flex;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      .hero {
-        padding: 6rem 2rem 4rem;
-      }
-
-      section {
-        padding: 4rem 2rem;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .project-card {
-        padding: 2rem;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .header {
-        padding: 1rem;
-      }
-
-      .nav-menu {
-        width: 100%;
-        padding: 1.5rem;
-      }
-
-      section {
-        padding: 3rem 1rem;
-      }
-
-      .hero {
-        padding: 5rem 1rem 3rem;
-      }
-    }
-
-    /* Loading Animation */
-    .loading {
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.5;
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-
-    /* Floating Elements */
-    .floating-element {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.1;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-20px) rotate(10deg);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khushi - UI/UX Designer & Frontend Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <!-- Floating Elements -->
-  <div class="floating-element" style="top: 20%; left: 10%; animation-delay: -2s;">
-    <i class="fas fa-code" style="font-size: 2rem; color: var(--accent-blue);"></i>
-  </div>
-  <div class="floating-element" style="top: 60%; right: 10%; animation-delay: -4s;">
-    <i class="fas fa-palette" style="font-size: 1.5rem; color: var(--accent-purple);"></i>
-  </div>
-  <div class="floating-element" style="bottom: 30%; left: 15%; animation-delay: -1s;">
-    <i class="fas fa-rocket" style="font-size: 1.8rem; color: var(--accent-pink);"></i>
-  </div>
 
-  <!-- Header -->
-  <header class="header">
-    <h1>Khushi</h1>
-    <nav class="nav">
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <a href="https://drive.google.com/file/d/108pWouIKiE3zk51BmES-VvbTlMNZtJE3/view?usp=sharing" target="_blank">
-        <button class="btn">Resume</button></a>
-      </ul>
-      <div class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-      </div>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Khushi.</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://drive.google.com/file/d/1IH90MOo4aluFGTIjreSDmBp5GM0mZTDD/view?usp=drive_link" target="_blank" class="resume-btn" download>Resume</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h2>Hello, I'm <span>Khushi</span></h2>
-    <p class="morph-text">A UI/UX Designer | Frontend Developer</p>
-  </section>
+    <header class="hero">
+        <div class="container">
+            <h1 class="hero-title">
+                Hi, I am Khushi<br>
+                <span class="typewriter"></span>
+            </h1>
+        </div>
+        <div class="hero-stickers">
+            <img src="images\Coffee.png" alt="Sticker 1" class="sticker s1">
+            <img src="images\Bow.png" alt="Sticker 2" class="sticker s2">
+            <img src="images\Palette.png" alt="Sticker 3" class="sticker s3">
+            <img src="images\Doughnut.png" alt="Sticker 4" class="sticker s4">
+            <img src="images\Cherry.png" alt="Sticker 5" class="sticker s5">
+        </div>
+    </header>
 
-  <!-- About Section -->
-  <section class="about" id="about" data-aos="fade-up">
-    <h2>About Me</h2>
-    <p>
-      I'm a passionate <strong>UI/UX designer</strong> with hands-on internship experience,
-      focused on creating intuitive, accessible, and meaningful designs. I enjoy
-      solving real user problems through thoughtful design and love collaborating on
-      impactful digital products.
-    </p>
-  </section>
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">A Little About Me</h2>
+            <p class="about-text">
+                I'm a UI/UX designer and UX researcher who loves to figure out how people think and what they need. I taught myself everything I know about design and code, and because of that, I have a special passion for making digital things both beautiful and easy to use. I'm a hands-on person, so I enjoy using my frontend skills to bring designs to life. My goal is simple: to create experiences that are not just pretty, but truly make sense for the people using them.
+            </p>
+        </div>
+    </section>
 
-  <!-- Skills Section -->
-  <section class="skills" id="skills" data-aos="fade-up">
-    <h2>My Skills</h2>
-    <div class="skills-grid">
-      <div class="skill" data-aos="zoom-in-up">User Research</div>
-      <div class="skill" data-aos="zoom-in-up">Wireframing (Figma)</div>
-      <div class="skill" data-aos="zoom-in-up">Prototyping</div>
-      <div class="skill" data-aos="zoom-in-up">Visual Design</div>
-      <div class="skill" data-aos="zoom-in-up">Interaction Design</div>
-      <div class="skill" data-aos="zoom-in-up">Usability Testing</div>
-      <div class="skill" data-aos="zoom-in-up">HTML, CSS, JavaScript</div>
-      <div class="skill" data-aos="zoom-in-up">Responsive Design</div>
-    </div>
-  </section>
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Work</h2>
+            <div class="project-tabs">
+                <button class="tab-button active" data-tab="ux-case-studies">UX Case Studies</button>
+                <button class="tab-button" data-tab="ux-projects">UX Projects</button>
+                <button class="tab-button" data-tab="frontend-projects">Frontend Projects</button>
+            </div>
+            
+            <div class="project-list active" id="ux-case-studies">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x250?text=LearnFlow-Dashboard" alt="LearnFlow Dashboard" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">LearnFlow Dashboard Design</h3>
+                            <div class="category-pill">UX Case Study</div>
+                        </div>
+                        <p class="project-description">A deep dive into designing a learning tracker dashboard to improve user flow and simplfy user experience. Focused on research, wireframing, protoyping and usability testing.</p>
+                        <a href="#" class="project-link">View Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images\StudentNest.png" alt="StudentNest UX Case Study" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">StudentNest UX Case Study</h3>
+                            <div class="category-pill">UX Case Study</div>
+                        </div>
+                        <p class="project-description">A UX case study focused on creating a seamless, user-friendly platform for students to find housing easily. It features intuitive design, advanced search filters,roommate finder, and secure communication to enhance the renting experience.</p>
+                        <a href="https://www.behance.net/gallery/220643193/StudentNest-Student-Housing-UX-Case-Study" class="project-link">View Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                </div>
 
-  <!-- Projects -->
-  <section class="projects" id="projects" data-aos="fade-up">
-    <h2>Projects</h2>
-    <h3  class="h3">Case Study</h3>
+            <div class="project-list" id="ux-projects">
+                <div class="project-card">
+                    <img src="images\Jewelery.png" alt="Jewelry e-commerce website" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Jewelry E-commerce Website</h3>
+                            <div class="category-pill">UX Project</div>
+                        </div>
+                        <p class="project-description">A UI/UX design for an e-commerce Jewelery Brand. The design focuses on clean product cards, catalog, filters, and checkout features.</p>
+                        <a href="https://www.figma.com/proto/WZ8Ik90EazugaIaT3GJGzI/Projects?page-id=13%3A94788&node-id=57-5708&viewport=60%2C1051%2C0.14&t=jLRQhHCAtvmZjrXx-1&scaling=scale-down-width&content-scaling=fixed" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                  <div class="project-card">
+                    <img src="images\Pet SHop.png" alt="Pet-shop app" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Multi-vendor Pet Shop App</h3>
+                            <div class="category-pill">UX Project</div>
+                        </div>
+                        <p class="project-description">A modern E-commerce app that sells pet supplies with proper filtering and smooth flow .</p>
+                        <a href="https://www.figma.com/proto/cRCZvYWCA9eFnFmlTh0dZM/Pet-Shop-Multi-Vendor?page-id=0%3A1&node-id=681-5772&p=f&viewport=2217%2C427%2C0.59&t=FqJeacdJwVWrrFxz-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=681%3A5772&show-proto-sidebar=1" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images\Housekeeping.png" alt="Dashboard Design Demo" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Housekeeping Dashboard</h3>
+                            <div class="category-pill">UX Project</div>
+                        </div>
+                        <p class="project-description">Designing an intuitive dashboard for data visualization, focusing on clarity and ease of access to key metrics.</p>
+                        <a href="https://www.figma.com/proto/WZ8Ik90EazugaIaT3GJGzI/Projects?page-id=0%3A1&node-id=45-7850&viewport=739%2C591%2C0.22&t=xh9ZXK1YmG05yDZB-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=45%3A7850" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images\Motessori.png" alt="Montessori Website Design Demo" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Montessori Website Design</h3>
+                            <div class="category-pill">UX Project</div>
+                        </div>
+                        <p class="project-description">Designing an attractive promotional website for a montessori having online admission feature</p>
+                        <a href="https://www.figma.com/proto/4KLTiqteEsYLvKiEzEncK3/Montessori?page-id=0%3A1&team_id=1404369897737685624&node-id=1-360&starting-point-node-id=1%3A360&scaling=scale-down-width&content-scaling=fixed&t=AoMJF2EbST3ocu9g-1" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images\doc app.png" alt="Doctor App" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Doctor App Home Screen Layout</h3>
+                            <div class="category-pill">UX Project</div>
+                        </div>
+                        <p class="project-description">A simple home screen of doctor app to show appointments and task schedule</p>
+                        <a href="https://www.figma.com/proto/WZ8Ik90EazugaIaT3GJGzI/Projects?page-id=13%3A1700&node-id=13-2288&viewport=45%2C86%2C0.19&t=uY9ae4VUWsu67uST-1&scaling=contain&content-scaling=fixed&starting-point-node-id=13%3A2288" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images\Scoopity.png" alt="Scoopity Website Demo" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Scoopity Ice-Cream Website Design</h3>
+                            <div class="category-pill">UX Project</div>
+                        </div>
+                        <p class="project-description">A cool yet modern ice cream website design using animations</p>
+                        <a href="https://www.figma.com/proto/4KLTiqteEsYLvKiEzEncK3/Montessori?page-id=0%3A1&team_id=1404369897737685624&node-id=1-360&starting-point-node-id=1%3A360&scaling=scale-down-width&content-scaling=fixed&t=AoMJF2EbST3ocu9g-1" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                </div>
 
-    <div class="project-card">
-      <div>
-        <h3>UX Case Study</h3>
-        <p>A UX case study focused on creating a seamless, user-friendly platform for students to find housing easily.
-          It features intuitive design, advanced search filters,roommate finder, and secure communication to enhance the
-          renting experience.</p>
 
-        <a href="https://www.behance.net/gallery/220643193/StudentNest-Student-Housing-UX-Case-Study" class="btn">
-          <i class="fas fa-external-link-alt"></i>
-          View Case Study
-        </a>
-      </div>
-      <div>
-        <img src="images/LandingPage.png" alt="" width="100%" style="border-radius: 20px; margin-top: 1rem;">
-      </div>
-    </div>
+            <div class="project-list" id="frontend-projects">
+              
+                <div class="project-card">
+                    <img src="images\Recipe.png" alt="Recipe Demo" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Interactive Recipe Finder</h3>
+                            <div class="category-pill">Frontend Project</div>
+                        </div>
+                        <p class="project-description">A dynamic web application for searching and displaying recipes using an external API, featuring responsive design and filtering .</p>
+                        <a href="https://khushikhanal4.github.io/RecipeRealm/" class="project-link">View Live Site <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                 <div class="project-card">
+                    <img src="images\LipLuxe.png" alt="Lipstick Demo" class="project-image">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Lipstick Brand E-commerce Website</h3>
+                            <div class="category-pill">Frontend Project</div>
+                        </div>
+                        <p class="project-description">An E-Commerce website that handles cart functionality using React js and Redux.</p>
+                        <a href="https://lip-luxe-khushikhanal4s-projects.vercel.app/" class="project-link">View Live Site <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
 
-   <h3 class="h3">UI/UX Projects</h3>
-<div class="grid">
-  <!-- Project 1 -->
-  <div class="project-cards">
-    <img src="images\Jewelery.png" alt="Jewelry E-commerce" width="100%" style="border-radius: 20px;">
-    <div style="margin-top: -30px;">
-      <h3>Jewelry E-commerce Website</h3>
-      <a href="https://www.figma.com/proto/WZ8Ik90EazugaIaT3GJGzI/Projects?page-id=13%3A94788&node-id=57-5708&viewport=60%2C1051%2C0.14&t=jLRQhHCAtvmZjrXx-1&scaling=scale-down-width&content-scaling=fixed"
-       class="btn">
-        <i class="fas fa-external-link-alt"></i>
-        View Prototype
-      </a>
-    </div>
-  </div>
+    <footer id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-text">
+                Have a project in mind or just want to say hi? I'd love to hear from you.
+            </p>
+            <div class="contact-info">
+                <a href="mailto:khanalkhushi123@gmail.com" class="contact-link">khanalkhushi123@gmail.com</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/khushi-khanal/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/khanalkhushi21/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.behance.net/khushikhanal/" target="_blank" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                <a href="https://github.com/KhushiKhanal4" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="copyright">
+                © 2025 Khushi. All rights reserved.
+            </p>
+        </div>
+    </footer>
 
-  <!-- Project 2 -->
-  <div class="project-cards">
-    <img src="images\doc app.png" alt="Doctor App UI" width="100%" style="border-radius: 20px;">
-    <div style="margin-top: -30px;">
-      <h3>Doctor App Home screen</h3>
-      <a href="https://www.figma.com/proto/WZ8Ik90EazugaIaT3GJGzI/Projects?page-id=13%3A1700&node-id=13-2288&viewport=45%2C86%2C0.19&t=uY9ae4VUWsu67uST-1&scaling=contain&content-scaling=fixed&starting-point-node-id=13%3A2288" class="btn">
-        <i class="fas fa-external-link-alt"></i>
-        View Prototype
-      </a>
-    </div>
-  </div>
+    <script src="script.js"></script>
 
-  <!-- Project 3 -->
-  <div class="project-cards">
-    <img src="images\Pet SHop.png" alt="Pet Shop App" width="100%" style="border-radius: 20px;">
-    <div style="margin-top: -30px;">
-      <h3>Pet Shop App</h3>
-      <a href="https://www.figma.com/proto/cRCZvYWCA9eFnFmlTh0dZM/Pet-Shop-Multi-Vendor?page-id=0%3A1&node-id=681-5772&p=f&viewport=2217%2C427%2C0.59&t=FqJeacdJwVWrrFxz-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=681%3A5772&show-proto-sidebar=1" class="btn">
-        <i class="fas fa-external-link-alt"></i>
-        View Prototype
-      </a>
-    </div>
-  </div>
-
-  <!-- Project 4 -->
-  <div class="project-cards">
-    <img src="images\Housekeeping.png" alt="Hospital Housekeeping Management System" width="100%" style="border-radius: 20px;">
-    <div style="margin-top: -30px;">
-      <h3>Hospital Housekeeping Management System</h3>
-      <a href="https://www.figma.com/proto/WZ8Ik90EazugaIaT3GJGzI/Projects?page-id=0%3A1&node-id=45-7850&viewport=739%2C591%2C0.22&t=xh9ZXK1YmG05yDZB-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=45%3A7850" class="btn">
-        <i class="fas fa-external-link-alt"></i>
-        View Prototype
-      </a>
-    </div>
-  </div>
-
-  <!-- Project 5 -->
-  <div class="project-cards">
-    <img src="images\Motessori.png" alt="Montessori Website UI" width="100%" style="border-radius: 20px;">
-    <div style="margin-top: -30px;">
-      <h3>Montessori Website UI</h3>
-      <a href="https://www.figma.com/proto/4KLTiqteEsYLvKiEzEncK3/Montessori?page-id=0%3A1&team_id=1404369897737685624&node-id=1-360&starting-point-node-id=1%3A360&scaling=scale-down-width&content-scaling=fixed&t=AoMJF2EbST3ocu9g-1" class="btn">
-        <i class="fas fa-external-link-alt"></i>
-        View Prototype
-      </a>
-    </div>
-  </div>
-
-  <!-- Project 6 -->
-  <div class="project-cards">
-    <img src="images\Pet Website.png" alt="Pet Shop Website" width="100%" style="border-radius: 20px;">
-    <div style="margin-top: -30px;">
-      <h3>Pet Shop Website</h3>
-      <a href="https://www.figma.com/proto/cRCZvYWCA9eFnFmlTh0dZM/Pet-Shop-Multi-Vendor?page-id=3%3A15636&node-id=84-11025&viewport=-7%2C306%2C0.09&t=RUKjLHbqxOsl0d9e-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=115%3A2877" class="btn">
-        <i class="fas fa-external-link-alt"></i>
-        View Prototype
-      </a>
-    </div>
-  </div>
-</div>
-
-  </section>
-
-  <!-- Contact -->
-  <section class="contact" id="contact" data-aos="fade-up">
-    <h2>Contact Me</h2>
-    <p>Let's create something awesome together 💬</p>
-    <a href="mailto:khanalkhushi123@gmail.com" class="btn">
-      <i class="fas fa-envelope"></i>
-      Email Me
-    </a>
-  </section>
-
-  <footer class="footer">
-    <p>© 2025 Khushi. All rights reserved.</p>
-  </footer>
-
-  <script>
-    // Hamburger Menu
-    const hamburger = document.getElementById("hamburger");
-    const navMenu = document.getElementById("nav-menu");
-
-    hamburger.addEventListener("click", () => {
-      navMenu.classList.toggle("show-menu");
-    });
-
-    // Smooth navigation
-    const navLinks = document.querySelectorAll(".nav-menu li a");
-
-    navLinks.forEach(link => {
-      link.addEventListener("click", function () {
-        // Remove 'active' class from all links
-        navLinks.forEach(nav => nav.classList.remove("active"));
-        // Add 'active' class to the clicked link
-        this.classList.add("active");
-        // Close mobile menu
-        navMenu.classList.remove("show-menu");
-      });
-    });
-
-    // Morph effect
-    const texts = ["UI/UX Designer", "Frontend Developer"];
-    let textIndex = 0;
-    const textElement = document.querySelector(".morph-text");
-
-    function morphText() {
-      let currentText = textElement.innerText;
-      let newText = texts[textIndex];
-
-      // Pad the shorter text with spaces to match the length of the longer text
-      let maxLength = Math.max(currentText.length, newText.length);
-      currentText = currentText.padEnd(maxLength, " ");
-      newText = newText.padEnd(maxLength, " ");
-
-      let chars = currentText.split("");
-      let frame = 0;
-
-      let interval = setInterval(() => {
-        let changes = 0;
-
-        chars = chars.map((char, i) => {
-          if (char !== newText[i]) {
-            changes++;
-            return getInterpolatedChar(char, newText[i], frame);
-          }
-          return char;
-        });
-
-        textElement.innerText = chars.join("").trimEnd(); // Trim trailing spaces for display
-
-        if (changes === 0) {
-          clearInterval(interval);
-          setTimeout(() => {
-            textIndex = (textIndex + 1) % texts.length; // Loop back to the first text
-            morphText(); // Restart the morphing process
-          }, 2000); // Pause before switching
-        }
-
-        frame++;
-      }, 50); // Speed of morphing effect
-    }
-
-    function getInterpolatedChar(from, to, frame) {
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ";
-      let fromIndex = chars.indexOf(from);
-      let toIndex = chars.indexOf(to);
-
-      if (fromIndex === -1) fromIndex = chars.indexOf(" ");
-      if (toIndex === -1) toIndex = chars.indexOf(" ");
-
-      if (fromIndex < toIndex) {
-        return chars[Math.min(fromIndex + frame, toIndex)];
-      } else if (fromIndex > toIndex) {
-        return chars[Math.max(fromIndex - frame, toIndex)];
-      } else {
-        return to;
-      }
-    }
-
-    // Start the infinite loop
-    morphText();
-
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('.header');
-      if (window.scrollY > 50) {
-        header.style.background = 'rgba(10, 10, 10, 0.95)';
-      } else {
-        header.style.background = 'rgba(10, 10, 10, 0.8)';
-      }
-    });
-
-    // Contact form submit (keeping your original functionality)
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxg0VqpkPU92zrIB0TbpW25POML77NSQyC8oZROQ04dnUNyzZUnwyZuCL9g73oHlHA0/exec';
-    const form = document.forms['submit-to-google-sheet'];
-
-    if (form) {
-      const msg = document.querySelector('.msg');
-      const submitButton = form.querySelector('button');
-
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-
-        // Show processing message and disable button
-        if (msg) msg.innerHTML = "Processing...";
-        if (submitButton) {
-          submitButton.disabled = true;
-          submitButton.innerHTML = "Submitting...";
-        }
-
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-          .then(response => {
-            if (msg) msg.innerHTML = "Message sent successfully!";
-
-            // Restore button state
-            if (submitButton) {
-              submitButton.disabled = false;
-              submitButton.innerHTML = "Submit";
-            }
-
-            setTimeout(() => {
-              if (msg) msg.innerHTML = "";
-            }, 5000);
-
-            form.reset();
-          })
-          .catch(error => {
-            if (msg) msg.innerHTML = "Error! Please try again.";
-            if (submitButton) {
-              submitButton.disabled = false;
-              submitButton.innerHTML = "Submit";
-            }
-            console.error('Error!', error.message);
-          });
-
-        if (submitButton) {
-          submitButton.classList.add("loading");
-          setTimeout(() => {
-            submitButton.classList.remove("loading");
-          }, 2000);
-        }
-      });
-    }
-
-    // Initialize AOS
-    AOS.init({
-      duration: 1000,
-      offset: 100,
-      easing: 'ease-out-cubic'
-    });
-  </script>
-</body>
-
-</html>
+  </body>
+  </html>
