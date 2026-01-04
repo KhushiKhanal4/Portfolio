@@ -314,17 +314,13 @@ section {
 }
 
 .project-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
     display: none;
-    /* Hidden by default */
+    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .project-list.active {
     display: grid;
-    /* Display when active */
-    grid-template-columns: repeat(2, 1fr);
 }
 
 .project-card {
